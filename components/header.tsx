@@ -5,7 +5,7 @@ export default function Header() {
   // TODO : input react-form-api 사용
   // TODO : 알바 눌렀을 때 Dark mode 적용되도록 수정
   return (
-    <div className="flex flex-row items-center justify-between p-3">
+    <header className="flex flex-row items-center justify-between p-3 left-0 right-0 mx-auto max-w-[1280px] fixed bg-slate-50">
       <div className="flex flex-row items-center space-x-8">
         <Link href={"/"}>
           <a className="cursor-pointer">
@@ -67,6 +67,6 @@ export default function Header() {
           검색하기
         </div>
       </div>
-    </div>
+    </header>
   );
 }
