@@ -5,7 +5,7 @@ export default function Header() {
   // TODO : input react-form-api 사용
   // TODO : 알바 눌렀을 때 Dark mode 적용되도록 수정
   return (
-    <header className="fixed w-screen left-0 right-0 mx-auto p-3 z-10 bg-slate-50">
+    <header className="fixed w-screen left-0 right-0 mx-auto p-3 z-10 bg-white">
       <div className="flex flex-row items-center justify-between left-0 right-0 mx-auto w-[1280px]">
         <div className="flex flex-row items-center space-x-8">
           <Link href={"/"}>

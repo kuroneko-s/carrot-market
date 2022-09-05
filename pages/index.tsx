@@ -5,9 +5,8 @@ import bgImage from "@images/bg-image.webp";
 import bgImage2 from "@images/bg-image2.webp";
 import bgImage3 from "@images/bg-image3.webp";
 import bgImage4 from "@images/bg-image4.webp";
-import Link from "next/link";
-import type { ItemProps } from "@components/item";
-import Item from "@components/item";
+import type { ItemProps } from "@components/main-item";
+import Item from "@components/main-item";
 import MainButton from "@components/main-button";
 
 const dummyCreator = (): ItemProps[] => {
@@ -25,7 +24,7 @@ const dummyCreator = (): ItemProps[] => {
 const Home: NextPage = () => {
   const dummyData = dummyCreator();
   return (
-    <section className="w-screen flex flex-col items-center space-y-16 pt-[58px]">
+    <section className="w-screen flex flex-col items-center space-y-16 pt-[66px]">
       <MainSection bgColor={"bg-orange-50"}>
         <div className="w-1/3 pl-20">
           <div className="text-4xl font-bold leading-[3rem] mb-12">
