@@ -6,8 +6,24 @@ import bgImage2 from "@images/bg-image2.webp";
 import bgImage3 from "@images/bg-image3.webp";
 import bgImage4 from "@images/bg-image4.webp";
 import Link from "next/link";
+import type { ItemProps } from "@components/item";
+import Item from "@components/item";
+import MainButton from "@components/main-button";
+
+const dummyCreator = (): ItemProps[] => {
+  return [...Array(8)].map((v, n) => ({
+    imageSrc: "",
+    imageAlt: `Test Image Alt ${n}`,
+    title: `Test Title ${n}`,
+    price: n * 10000 + "",
+    location: `Test Location ${n}`,
+    like: n,
+    chat: n,
+  }));
+};
 
 const Home: NextPage = () => {
+  const dummyData = dummyCreator();
   return (
     <section className="w-screen flex flex-col items-center space-y-16 pt-[58px]">
       <MainSection bgColor={"bg-orange-50"}>
@@ -48,20 +64,8 @@ const Home: NextPage = () => {
           <p className="">
             동네 주민들과 가깝고 따뜻한 거래를 지금 경험해보세요.
           </p>
-          <Link href={"/"}>
-            <a className="inline-block mr-4 shadow-sm">
-              <div className="inline-block cursor-pointer px-5 py-3 text-lg font-semibold rounded-md bg-slate-100 hover:bg-slate-200">
-                인기매물 보기
-              </div>
-            </a>
-          </Link>
-          <Link href={"/"}>
-            <a className="inline-block shadow-sm">
-              <div className="inline-block cursor-pointer px-5 py-3 text-lg font-semibold rounded-md bg-slate-100 hover:bg-slate-200">
-                믿을 수 있는 중고거래
-              </div>
-            </a>
-          </Link>
+          <MainButton context="인기매물 보기" href="/" style="mr-4" />
+          <MainButton context="믿을 수 있는 중고거래" href="/" />
         </div>
       </MainSection>
 
@@ -245,21 +249,45 @@ const Home: NextPage = () => {
             <br />
             동네 주민이 남긴 진짜 후기를 함께 확인해보세요!
           </p>
-          <Link href={"/"}>
-            <a className="inline-block shadow-sm">
-              <div className="inline-block cursor-pointer px-5 py-3 text-lg font-semibold rounded-md bg-slate-100 hover:bg-slate-200">
-                당근마켓 동네가게 찾기
-              </div>
-            </a>
-          </Link>
+          <MainButton context="당근마켓 동네가게 찾기" href="/" />
         </div>
       </MainSection>
 
-      <section className="w-screen shadow-sm bg-slate-100">
-        <div className="flex flex-row justify-center items-center overflow-hidden max-w-[1280px] left-0 right-0 mx-auto">
-          <div className="h-screen w-full">
-            <h1>Hello</h1>
+      <section className="w-screen shadow-sm bg-slate-50 py-36">
+        <div className="flex flex-col justify-center items-center overflow-hidden max-w-[1280px] left-0 right-0 mx-auto space-y-16">
+          <div className="w-full flex flex-col items-center">
+            <p className="text-4xl font-extrabold">중고거래 인기매물</p>
           </div>
+          <div className="grid grid-cols-4 grid-rows-2 gap-[48px]">
+            {dummyData.map((data, n) => (
+              <Item key={n} {...data} />
+            ))}
+          </div>
+          <p className="underline font-semibold text-sm">인기매물 더 보기</p>
+        </div>
+      </section>
+
+      <section className="flex flex-col justify-center items-center pb-16">
+        <p className="underline font-semibold text-sm mb-4 cursor-pointer">
+          중고거래 인기검색어
+        </p>
+        <div className="space-x-10">
+          <span className="cursor-pointer text-sm hover:underline">
+            포켓몬빵
+          </span>
+          <span className="cursor-pointer text-sm hover:underline">자전거</span>
+          <span className="cursor-pointer text-sm hover:underline">의자</span>
+          <span className="cursor-pointer text-sm hover:underline">냉장고</span>
+          <span className="cursor-pointer text-sm hover:underline">캠핑</span>
+          <span className="cursor-pointer text-sm hover:underline">
+            아이패드
+          </span>
+          <span className="cursor-pointer text-sm hover:underline">아이폰</span>
+          <span className="cursor-pointer text-sm hover:underline">노트북</span>
+          <span className="cursor-pointer text-sm hover:underline">알바</span>
+          <span className="cursor-pointer text-sm hover:underline">
+            오토바이
+          </span>
         </div>
       </section>
     </section>
