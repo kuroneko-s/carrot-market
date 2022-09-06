@@ -183,9 +183,7 @@ export default function Footer() {
                   form="myForm"
                   className="w-24 pl-6 py-0.5 text-sm rounded-md cursor-pointer group-hover:bg-gray-100"
                 >
-                  <option value="americano" selected>
-                    한국
-                  </option>
+                  <option defaultValue="americano">한국</option>
                   <option value="caffe latte">카페라테</option>
                   <option value="cafe au lait">카페오레</option>
                   <option value="espresso">에스프레소</option>
