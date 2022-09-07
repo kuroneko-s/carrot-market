@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import Comment from "@components/comment";
 import type { ItemProps } from "@components/main-item";
 import type { SearchDongnePorps } from "./search-dongne";
+import { useRouter } from "next/router";
 
 interface DetailsProps {
   type?: "Articles" | "Dongne";
@@ -15,6 +16,9 @@ interface DetailsProps {
 export default function Details({ type }: DetailsProps) {
   const [itmesData, setItmesData] = useState<ItemProps[]>();
   const [dongneData, setDongneData] = useState<SearchDongnePorps[]>();
+  const router = useRouter();
+  const { id } = router.query;
+  const index = id ? +id?.toString() : 0;
 
   useEffect(() => {
     setItmesData(dummyItemPropsCreator());
@@ -24,7 +28,7 @@ export default function Details({ type }: DetailsProps) {
   return (
     <div className="pt-[66px]">
       <div className="w-[720px] inset-x-0 mx-auto pt-5">
-        {dongneData && dongneData[0]?.imageSrc !== undefined ? (
+        {dongneData && dongneData[index]?.imageSrc !== undefined ? (
           <div className="w-full flex flex-row justify-center items-center cursor-pointer">
             <div className="w-[4%] flex justify-center">
               <svg
@@ -110,9 +114,16 @@ export default function Details({ type }: DetailsProps) {
 
         {type === "Dongne" ? (
           <div className="py-6 details border-b">
-            <p>댓글 n</p>
-            <div>
+            <p className="mb-4 text-base font-bold">댓글 n</p>
+            <div className="divide-y space-y-3">
               <Comment />
+              <Comment />
+              <Comment answer={true} />
+              <Comment answer={true} />
+              <Comment answer={true} />
+              <Comment />
+              <Comment />
+              <Comment answer={true} />
             </div>
           </div>
         ) : null}
