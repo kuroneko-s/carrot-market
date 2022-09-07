@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 export interface ItemProps {
-  imageSrc: string;
-  imageAlt: string;
+  imageSrc: string | undefined;
+  imageAlt: string | undefined;
   title: string;
   price: string;
   location: string;

@@ -1,25 +1,30 @@
-import type { ItemProps } from "@components/main-item";
 import Item from "@components/main-item";
-import { dummyItemPropsCreator } from "lib/dummyDataCreator";
+import {
+  dummyDongneCreator,
+  dummyItemPropsCreator,
+} from "lib/dummyDataCreator";
 import { useEffect, useState } from "react";
 import Comment from "@components/comment";
+import type { ItemProps } from "@components/main-item";
+import type { SearchDongnePorps } from "./search-dongne";
 
 interface DetailsProps {
-  children?: any;
-  type: "Articles" | "Dongne";
+  type?: "Articles" | "Dongne";
 }
 
-export default function Details({ children, type }: DetailsProps) {
+export default function Details({ type }: DetailsProps) {
   const [itmesData, setItmesData] = useState<ItemProps[]>();
+  const [dongneData, setDongneData] = useState<SearchDongnePorps[]>();
 
   useEffect(() => {
     setItmesData(dummyItemPropsCreator());
+    setDongneData(dummyDongneCreator());
   }, []);
 
   return (
     <div className="pt-[66px]">
       <div className="w-[720px] inset-x-0 mx-auto pt-5">
-        {type === "Articles" ? (
+        {dongneData && dongneData[0]?.imageSrc !== undefined ? (
           <div className="w-full flex flex-row justify-center items-center cursor-pointer">
             <div className="w-[4%] flex justify-center">
               <svg
@@ -103,12 +108,14 @@ export default function Details({ children, type }: DetailsProps) {
           )}
         </div>
 
-        <div className="py-6 details border-b">
-          <p>댓글 n</p>
-          <div>
-            <Comment />
+        {type === "Dongne" ? (
+          <div className="py-6 details border-b">
+            <p>댓글 n</p>
+            <div>
+              <Comment />
+            </div>
           </div>
-        </div>
+        ) : null}
 
         <div className="details py-8">
           <div className="flex flex-row justify-between items-center">

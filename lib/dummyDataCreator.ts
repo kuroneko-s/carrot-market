@@ -32,5 +32,7 @@ export const dummyDongneCreator = (): SearchDongnePorps[] => {
     location: randomStrCreator(Math.floor(Math.random() * 30)),
     chat: n + "",
     id: n + "",
+    imageSrc: n % 4 === 0 ? "local/src/path" : undefined,
+    imageAlt: n % 4 === 0 ? "Test Image Alt" : undefined,
   }));
 };
