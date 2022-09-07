@@ -4,35 +4,18 @@ import SearchDongne from "@components/search-dongne";
 import type { NextPage } from "next";
 import type { SearchItemProps } from "@components/search-item";
 import type { SearchDongnePorps } from "@components/search-dongne";
-import randomStrCreator from "./../../lib/randomStr";
 import { useEffect, useState } from "react";
-
-const dummyCreator = (): SearchItemProps[] => {
-  return [...Array(18)].map((v, n) => ({
-    imageSrc: "",
-    imageAlt: `Test Image Al2q3wejpqowjepowqjpeowqjpoewqt ${n}`,
-    title: `Test Title Al2q3wejpqowjepowqjpeowqjpoewqt ${n}`,
-    price: n * 10000 + "",
-    location: `Test Location ${n}`,
-    like: n,
-  }));
-};
-
-const dummyDongneCreator = (): SearchDongnePorps[] => {
-  return [...Array(18)].map((v, n) => ({
-    context: randomStrCreator(Math.floor(Math.random() * 250)),
-    location: randomStrCreator(Math.floor(Math.random() * 30)),
-    chat: n + "",
-    id: n + "",
-  }));
-};
+import {
+  dummyDongneCreator,
+  dummySearchItemCreator,
+} from "lib/dummyDataCreator";
 
 const Search: NextPage = () => {
   const [itmesData, setItmesData] = useState<SearchItemProps[]>();
   const [dongneData, setDongneData] = useState<SearchDongnePorps[]>();
 
   useEffect(() => {
-    setItmesData(dummyCreator());
+    setItmesData(dummySearchItemCreator());
     setDongneData(dummyDongneCreator());
   }, []);
 

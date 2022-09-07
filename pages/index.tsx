@@ -5,24 +5,12 @@ import bgImage from "@images/bg-image.webp";
 import bgImage2 from "@images/bg-image2.webp";
 import bgImage3 from "@images/bg-image3.webp";
 import bgImage4 from "@images/bg-image4.webp";
-import type { ItemProps } from "@components/main-item";
 import Item from "@components/main-item";
 import MainButton from "@components/main-button";
-
-const dummyCreator = (): ItemProps[] => {
-  return [...Array(8)].map((v, n) => ({
-    imageSrc: "",
-    imageAlt: `Test Image Alt ${n}`,
-    title: `Test Title ${n}`,
-    price: n * 10000 + "",
-    location: `Test Location ${n}`,
-    like: n,
-    chat: n,
-  }));
-};
+import { dummyItemPropsCreator } from "lib/dummyDataCreator";
 
 const Home: NextPage = () => {
-  const dummyData = dummyCreator();
+  const dummyData = dummyItemPropsCreator();
   return (
     <section className="w-screen flex flex-col items-center space-y-16 pt-[66px]">
       <MainSection bgColor={"bg-orange-50"}>
