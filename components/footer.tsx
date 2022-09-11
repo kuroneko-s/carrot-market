@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <div className="w-screen left-0 right-0 mx-auto border-t py-16">
-      <div className="flex flex-col justify-center items-center left-0 right-0 mx-auto w-[1280px]">
+    <div className="w-full left-0 right-0 mx-auto border-t py-16">
+      <div className="flex flex-col justify-center items-center left-0 right-0 mx-auto xl:w-[1280px] lg::w-[1080px]">
         <div className="flex flex-row w-3/5 justify-center space-x-12 border-b pb-12">
           <div className="w-1/2 grid grid-rows-3 grid-cols-3 gap-12 text-xs">
             <div className="hover:cursor-pointer hover:underline">중고거래</div>
